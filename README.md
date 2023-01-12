@@ -6,7 +6,9 @@ La empresa “Mascotas y Mascotas”, rescata animales que han sido abandonados,
 rehabilitan y cuando están totalmente sanos, los ponen a disposición para que estos sean
 adoptados, se tienen las siguientes entidades:
 
- <img> 
+<picture>
+  <img src="https://github.com/sdtsnake/MacotasYMascotas/blob/ac49de4a696fb81d407377c9284ad0981c4a1f84/src/main/resources/img.png">
+</picture>
 
 Construya el modelo entidad relación en la base de datos de su elección (relaciones, tipos
 de datos, llaves primarias y foráneas, etc…), si ud. lo considera necesario, puede adicionar
@@ -26,3 +28,6 @@ siguiente:<br>
 Debe recibir un parámetro get<br>
 Debe consultar en la base de datos con una de las consultas anteriores<br>
 Debe responder en formato Json<br>
+
+# Solucion
+Para este ejercicio se usa simple JDBC con **Srping Boot** y no se resolvio un unico endpoint si no se que se solucinaron todos los casos que se plantearon
