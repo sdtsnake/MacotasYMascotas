@@ -6,12 +6,12 @@ import org.springframework.data.relational.core.mapping.Column;
 
 public class MascotaDto {
     @Id
-    @Column("idmacota")
+    @Column("idmascota")
     private Integer id;
     private String nombre;
     @Column("tipo_mascota")
     private Integer tipoMascota;
-    private Integer propietatio;
+    private Integer propietario;
 
     public Integer getId() {
         return id;
@@ -37,11 +37,17 @@ public class MascotaDto {
         this.tipoMascota = tipoMascota;
     }
 
-    public Integer getPropietatio() {
-        return propietatio;
+    public Integer getPropietario() {
+        return propietario;
     }
 
-    public void setPropietatio(Integer propietatio) {
-        this.propietatio = propietatio;
+    public void setPropietario(Integer propietario) {
+        this.propietario = propietario;
+    }
+    public MascotaDto(Integer id, String nombre, Integer tipoMascota, Integer propietario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipoMascota = tipoMascota;
+        this.propietario = propietario;
     }
 }

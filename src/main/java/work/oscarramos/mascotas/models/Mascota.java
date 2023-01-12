@@ -8,8 +8,13 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Mascota {
 
     @Id
-    @Column("idmacota")
+    @Column("idmascota")
     private Integer id;
+    private String nombre;
+    @Column("tipo_mascota")
+    private Integer tipoMascota;
+    private Integer propietario;
+
 
     public Integer getId() {
         return id;
@@ -35,16 +40,12 @@ public class Mascota {
         this.tipoMascota = tipoMascota;
     }
 
-    public Integer getPropietatio() {
-        return propietatio;
+    public Integer getPropietario() {
+        return propietario;
     }
 
-    public void setPropietatio(Integer propietatio) {
-        this.propietatio = propietatio;
+    public void setPropietario(Integer propietario) {
+        this.propietario = propietario;
     }
 
-    private String nombre;
-    @Column("tipo_mascota")
-    private Integer tipoMascota;
-    private Integer propietatio;
 }

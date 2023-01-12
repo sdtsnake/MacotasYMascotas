@@ -5,12 +5,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import work.oscarramos.mascotas.models.Mascota;
 
+import java.util.List;
+
 @Repository
 public interface MascotaRepository extends CrudRepository<Mascota,Integer> {
 
     @Query("SELECT * FROM mascota")
-    public Mascota todasMascotas();
+    List<Mascota> todasMascotas();
 
     @Query("SELECT * FROM mascota where mascota.propietario is null")
-    public Mascota mascotasSinPropietario();
+    List<Mascota> mascotasSinPropietario();
 }
