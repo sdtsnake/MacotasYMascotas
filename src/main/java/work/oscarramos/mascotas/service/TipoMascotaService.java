@@ -1,8 +1,10 @@
 package work.oscarramos.mascotas.service;
 
 import work.oscarramos.mascotas.dto.TipoMascotaDto;
-import work.oscarramos.mascotas.models.TipoMascota;
+import work.oscarramos.mascotas.models.TipoMascotaCantidad;
+
+import java.util.List;
 
 public interface TipoMascotaService {
-    TipoMascotaDto nroMascotasPorTipo(TipoMascota mascota);
+    List<TipoMascotaDto> nroMascotasPorTipo();
 }

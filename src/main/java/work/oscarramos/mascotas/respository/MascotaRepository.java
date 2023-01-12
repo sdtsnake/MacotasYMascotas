@@ -1,18 +1,23 @@
 package work.oscarramos.mascotas.respository;
 
-import org.springframework.data.jdbc.repository.query.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import work.oscarramos.mascotas.mappers.rowmapper.MascotasRowMapper;
 import work.oscarramos.mascotas.models.Mascota;
 
 import java.util.List;
 
 @Repository
-public interface MascotaRepository extends CrudRepository<Mascota,Integer> {
-
-    @Query("SELECT * FROM mascota")
-    List<Mascota> todasMascotas();
-
-    @Query("SELECT * FROM mascota where mascota.propietario is null")
-    List<Mascota> mascotasSinPropietario();
+public class MascotaRepository {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    private final String sql1 =  "SELECT * FROM mascota";
+    public List<Mascota> todasMascotas(){
+        return jdbcTemplate.query(sql1,new MascotasRowMapper());
+    };
+    private final String sql2 = "SELECT * FROM mascota where mascota.propietario is null";
+    public List<Mascota> mascotasSinPropietario(){
+        return jdbcTemplate.query(sql2,new MascotasRowMapper());
+    };
 }

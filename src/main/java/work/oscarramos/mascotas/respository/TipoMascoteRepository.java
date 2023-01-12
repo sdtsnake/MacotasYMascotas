@@ -1,16 +1,26 @@
 package work.oscarramos.mascotas.respository;
 
-import org.springframework.data.jdbc.repository.query.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import work.oscarramos.mascotas.dto.TipoMascotaDto;
-import work.oscarramos.mascotas.models.TipoMascota;
+import work.oscarramos.mascotas.mappers.TipoMascotaMapper;
+import work.oscarramos.mascotas.mappers.rowmapper.TipoMascotaRowMapper;
+import work.oscarramos.mascotas.models.TipoMascotaCantidad;
+
+import java.util.List;
 
 @Repository
-public interface TipoMascoteRepository extends CrudRepository<TipoMascota,Integer> {
+public class TipoMascoteRepository {
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    @Query("SELECT tm.descripcion, count(tm.idtipo_mascota) AS nro_mascotas \n" +
-            "FROM tipo_mascota AS tm, mascota AS m \n" +
-            "where tm.idtipo_mascota = m.tipo_mascota GROUP BY tm.idtipo_mascota, tm.descripcion; ")
-    public TipoMascotaDto nroMascotasPorTipo();
+    @Autowired
+    private TipoMascotaMapper tipoMascotaMapper;
+
+    private final String sql = "SELECT tm.descripcion, count(tm.idtipo_mascota) AS nro_mascotas \n" +
+                               "FROM tipo_mascota AS tm, mascota AS m \n" +
+                               "where tm.idtipo_mascota = m.tipo_mascota GROUP BY tm.idtipo_mascota, tm.descripcion; ";
+    public List<TipoMascotaCantidad> nroMascotasPorTipo(){
+        return jdbcTemplate.query(sql,new TipoMascotaRowMapper());
+    };
 }

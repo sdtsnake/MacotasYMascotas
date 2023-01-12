@@ -1,5 +1,6 @@
 package work.oscarramos.mascotas.serviceimpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import work.oscarramos.mascotas.dto.MascotaDto;
 import work.oscarramos.mascotas.mappers.MascotaMapper;
@@ -11,7 +12,9 @@ import java.util.List;
 
 @Service
 public class MascotaServiceImpl implements MascotaService {
+    @Autowired
     MascotaRepository mascotaRepository;
+    @Autowired
     MascotaMapper mascotaMapper;
 
 
@@ -33,8 +36,5 @@ public class MascotaServiceImpl implements MascotaService {
         return mascotaMapper.toDto(mascotasList);
     }
 
-    public MascotaServiceImpl(MascotaRepository mascotaRepository, MascotaMapper mascotaMapper) {
-        this.mascotaRepository = mascotaRepository;
-        this.mascotaMapper = mascotaMapper;
-    }
+
 }

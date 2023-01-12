@@ -2,16 +2,12 @@ package work.oscarramos.mascotas.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
 
-@Table("Mascota")
+
 public class Mascota {
 
-    @Id
-    @Column("idmascota")
     private Integer id;
     private String nombre;
-    @Column("tipo_mascota")
     private Integer tipoMascota;
     private Integer propietario;
 
